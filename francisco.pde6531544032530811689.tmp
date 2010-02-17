@@ -1,0 +1,70 @@
+XMLElement xml;
+pVector minLatLon, maxLatLon;
+HashMap hm;
+
+void setup() {
+  size(700,700);
+  xml = new XMLElement(this, "davis_test3.osm");
+  int numNodes = xml.getChildCount();
+  //there will be more nodes here - getChildCount
+  //obviously returns ways, relations, etc.
+  //but default load factor on the hash is 0.75, so maybe it works.
+  hm = new HashMap(numNodes);
+  //get the first tag - it describes our bounds.
+  XMLElement kid = xml.getChild(0);
+  minLatLon = new PVector(kid.getFloatAttribute("minlat"), kid.getFloatAttribute("minlon"));
+  maxLatLon = new PVector(kid.getFloatAttribute("maxlat"), kid.getFloatAttribute("maxlon"));
+  //It does seem to ignore these - some of the nodes
+  //returned by the OSM file exceed these bounds. Many of them do.
+  println("Min: " + minLatLon);
+  println("Max: " + maxLatLon);
+  
+  for (int i = 1; i < numNodes; i++) { //change this from 10 later.
+    kid = xml.getChild(i);
+    String name = kid.getName();
+    if(name.equals("node")) {
+      String id = kid.getStringAttribute("id");
+      float lat = kid.getFloatAttribute("lat");
+      float lon = kid.getFloatAttribute("lon");
+      println(id + " : " + name + " : " + lat + " : " + lon);   
+      PVector coord = new PVector(lat, lon);
+      coord = getScreenCoords(coord);
+      ellipse(coord.x, coord.y, 5, 5);
+      hm.put(id, kid);
+    } else if(name.equals("way")) {
+        int numNodesInWay = kid.getChildCount();
+        beginShape(LINES);
+        for(int j=0; j<numNodesInWay; j++) {
+          XMLElement kid2 = kid.getChild(j);
+          if(kid2.getName().equals("nd")) { //ignore "tag"
+            kid2 = (XMLElement)hm.get(kid.getChild(j).getStringAttribute("ref"));
+            vertex(getScreenCoords(new PVector(kid2.getFloatAttribute(lat), kid2.getFloatAttribute(lon))));
+          }
+        }
+        endShape();
+    }
+  }
+}
+
+
+
+/**@deprecated
+float getScreenX(float lon) {
+/*
+  println("lon: " + lon);
+  println("lon-minLon: " + abs(abs(lon)-abs(minLon)));
+  println("max-min: "+ abs(abs(maxLon)-abs(minLon)));
+  println("height: " + height);
+  print("answer: " + abs(abs(lon)-abs(minLon)) / (abs(abs(minLon)-abs(maxLon))) * height);
+ 
+  return (abs(abs(lon)-abs(minLon))) / (abs(abs(minLon)-abs(maxLon))) * width;
+}
+float getScreenY(float lat) {
+  println("lat: " + lat);
+  println("lat-minlat: " + abs(abs(lat)-abs(minLat)));
+  println("max-min: "+ abs(abs(maxLat)-abs(minLat)));
+  println("width: " + height);
+  println("answer: " + abs(abs(lat)-abs(minLat)) / (abs(abs(minLat)-abs(maxLat))) * height);
+  return (abs(abs(lat)-abs(minLat))) / abs((abs(maxLat)-abs(minLat))) * height;
+}
+*/

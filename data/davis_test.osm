@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.0.2">
+ <bounds minlat="38.55936" minlon="-121.89066" maxlat="38.56423" maxlon="-121.8829"/>
+ <node id="95705152" lat="38.5616107" lon="-121.886912" user="woodpeck_fixbot" uid="147510" visible="true" version="4" changeset="2174879" timestamp="2009-08-17T09:26:34Z"/>
+ <node id="95705154" lat="38.5687894" lon="-121.886884" user="woodpeck_fixbot" uid="147510" visible="true" version="3" changeset="2174879" timestamp="2009-08-17T09:26:34Z"/>
+ <node id="95708190" lat="38.5615799" lon="-121.849652" user="Speight" uid="24452" visible="true" version="5" changeset="2731511" timestamp="2009-10-04T06:53:49Z"/>
+ <node id="95709794" lat="38.561574" lon="-121.858841" user="woodpeck_fixbot" uid="147510" visible="true" version="6" changeset="2174879" timestamp="2009-08-17T09:28:21Z"/>
+ <node id="95709869" lat="38.5615863" lon="-121.840384" user="woodpeck_fixbot" uid="147510" visible="true" version="5" changeset="2174879" timestamp="2009-08-17T09:28:21Z"/>
+ <node id="95710020" lat="38.5615732" lon="-121.833035" user="woodpeck_fixbot" uid="147510" visible="true" version="6" changeset="3561958" timestamp="2010-01-07T13:49:54Z"/>
+ <node id="95710126" lat="38.5615058" lon="-121.803237" user="woodpeck_fixbot" uid="147510" visible="true" version="5" changeset="3561958" timestamp="2010-01-07T13:49:58Z"/>
+ <node id="95719316" lat="38.5615396" lon="-121.821722" user="woodpeck_fixbot" uid="147510" visible="true" version="5" changeset="3424140" timestamp="2009-12-22T00:13:12Z"/>
+ <node id="95721221" lat="38.5615807" lon="-121.8964" user="woodpeck_fixbot" uid="147510" visible="true" version="5" changeset="2174879" timestamp="2009-08-17T09:31:05Z"/>
+ <node id="95723008" lat="38.5616376" lon="-121.877754" user="woodpeck_fixbot" uid="147510" visible="true" version="4" changeset="2174879" timestamp="2009-08-17T09:31:14Z"/>
+ <node id="95723009" lat="38.5616376" lon="-121.877068" user="woodpeck_fixbot" uid="147510" visible="true" version="4" changeset="2174879" timestamp="2009-08-17T09:31:14Z"/>
+ <node id="95723010" lat="38.5616107" lon="-121.872416" user="woodpeck_fixbot" uid="147510" visible="true" version="4" changeset="2174879" timestamp="2009-08-17T09:31:14Z"/>
+ <node id="95723011" lat="38.5615968" lon="-121.869411" user="woodpeck_fixbot" uid="147510" visible="true" version="5" changeset="2174879" timestamp="2009-08-17T09:31:14Z"/>
+ <node id="95723012" lat="38.5615979" lon="-121.856328" user="woodpeck_fixbot" uid="147510" visible="true" version="4" changeset="2174879" timestamp="2009-08-17T09:31:14Z"/>
+ <node id="95723013" lat="38.5615799" lon="-121.847025" user="Speight" uid="24452" visible="true" version="4" changeset="2731511" timestamp="2009-10-04T06:53:50Z"/>
+ <node id="95723014" lat="38.5615799" lon="-121.845901" user="Speight" uid="24452" visible="true" version="4" changeset="2731511" timestamp="2009-10-04T06:53:50Z"/>
+ <node id="329722585" lat="38.5616009" lon="-121.896177" user="Speight" uid="24452" visible="true" version="1" changeset="750009" timestamp="2009-01-06T23:33:02Z"/>
+ <node id="329722586" lat="38.5616076" lon="-121.895868" user="Speight" uid="24452" visible="true" version="1" changeset="750009" timestamp="2009-01-06T23:33:02Z"/>
+ <node id="382659776" lat="38.5615329" lon="-121.812487" user="Speight" uid="24452" visible="true" version="2" changeset="2731511" timestamp="2009-10-04T06:53:50Z"/>
+ <node id="386997311" lat="38.5615611" lon="-121.831051" user="jraller" uid="46789" visible="true" version="1" changeset="1009530" timestamp="2009-04-28T22:17:35Z"/>
+ <node id="387000453" lat="38.5615917" lon="-121.85698" user="jraller" uid="46789" visible="true" version="1" changeset="1009530" timestamp="2009-04-28T22:20:56Z"/>
+ <way id="10744505" user="jraller" uid="46789" visible="true" version="2" changeset="1031162" timestamp="2009-04-30T22:30:32Z">
+  <nd ref="95705152"/>
+  <nd ref="95705154"/>
+  <tag k="highway" v="residential"/>
+  <tag k="tiger:cfcc" v="A41"/>
+  <tag k="tiger:county" v="Yolo, CA"/>
+  <tag k="tiger:reviewed" v="no"/>
+  <tag k="tiger:separated" v="no"/>
+  <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+  <tag k="tiger:tlid" v="67699860"/>
+  <tag k="tiger:upload_uuid" v="bulk_upload.pl-20c3e4cc-35fc-420e-9f0d-ebe52b92ebc4"/>
+ </way>
+ <way id="25338988" user="Speight" uid="24452" visible="true" version="8" changeset="2731511" timestamp="2009-10-04T06:52:34Z">
+  <nd ref="95721221"/>
+  <nd ref="329722585"/>
+  <nd ref="329722586"/>
+  <nd ref="95705152"/>
+  <nd ref="95723008"/>
+  <nd ref="95723009"/>
+  <nd ref="95723010"/>
+  <nd ref="95723011"/>
+  <nd ref="95709794"/>
+  <nd ref="387000453"/>
+  <nd ref="95723012"/>
+  <nd ref="95708190"/>
+  <nd ref="95723013"/>
+  <nd ref="95723014"/>
+  <nd ref="95709869"/>
+  <nd ref="95710020"/>
+  <nd ref="386997311"/>
+  <nd ref="95719316"/>
+  <nd ref="382659776"/>
+  <nd ref="95710126"/>
+  <tag k="highway" v="secondary"/>
+  <tag k="name" v="County Road 31"/>
+  <tag k="name_1" v="County Highway E6"/>
+  <tag k="ref" v="E6"/>
+  <tag k="tiger:cfcc" v="A41"/>
+  <tag k="tiger:county" v="Yolo, CA"/>
+  <tag k="tiger:name_base" v="County Road 31"/>
+  <tag k="tiger:name_base_1" v="County Highway E6"/>
+  <tag k="tiger:reviewed" v="no"/>
+  <tag k="tiger:separated" v="no"/>
+  <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+  <tag k="tiger:tlid" v="67695450:67695451:67695457:67695440:67695435:67695438:67695334:67695316:67700352:67700353:67695302:67695304:67705737"/>
+  <tag k="tiger:upload_uuid" v="bulk_upload.pl-20c3e4cc-35fc-420e-9f0d-ebe52b92ebc4"/>
+  <tag k="tiger:zip_left" v="95616"/>
+  <tag k="tiger:zip_right" v="95616"/>
+ </way>
+</osm>

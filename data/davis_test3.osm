@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.0.2">
+ <bounds minlat="38.633883" minlon="-121.849283" maxlat="38.636313" maxlon="-121.845399"/>
+ <node id="95707525" lat="38.634529" lon="-121.848756" user="woodpeck_fixbot" uid="147510" visible="true" version="2" changeset="2174879" timestamp="2009-08-17T09:27:18Z"/>
+ <node id="95707526" lat="38.634401" lon="-121.844948" user="woodpeck_fixbot" uid="147510" visible="true" version="2" changeset="3424140" timestamp="2009-12-22T00:07:41Z"/>
+ <node id="95711724" lat="38.6633767" lon="-121.848985" user="woodpeck_fixbot" uid="147510" visible="true" version="5" changeset="3561958" timestamp="2010-01-07T13:51:12Z"/>
+ <node id="95711748" lat="38.6488873" lon="-121.848891" user="woodpeck_fixbot" uid="147510" visible="true" version="3" changeset="2174879" timestamp="2009-08-17T09:28:51Z"/>
+ <node id="95722790" lat="38.6673788" lon="-121.848945" user="woodpeck_fixbot" uid="147510" visible="true" version="3" changeset="3226043" timestamp="2009-11-27T08:13:31Z"/>
+ <way id="10744909" user="DaveHansenTiger" uid="7168" visible="true" version="1" changeset="383160" timestamp="2007-11-02T11:06:24Z">
+  <nd ref="95707525"/>
+  <nd ref="95707526"/>
+  <tag k="highway" v="residential"/>
+  <tag k="tiger:cfcc" v="A41"/>
+  <tag k="tiger:county" v="Yolo, CA"/>
+  <tag k="tiger:reviewed" v="no"/>
+  <tag k="tiger:separated" v="no"/>
+  <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+  <tag k="tiger:tlid" v="67689235"/>
+  <tag k="tiger:upload_uuid" v="bulk_upload.pl-20c3e4cc-35fc-420e-9f0d-ebe52b92ebc4"/>
+ </way>
+ <way id="10747853" user="DaveHansenTiger" uid="7168" visible="true" version="1" changeset="383530" timestamp="2007-11-02T11:30:49Z">
+  <nd ref="95722790"/>
+  <nd ref="95711724"/>
+  <nd ref="95711748"/>
+  <nd ref="95707525"/>
+  <tag k="highway" v="residential"/>
+  <tag k="name" v="County Road 95A"/>
+  <tag k="tiger:cfcc" v="A41"/>
+  <tag k="tiger:county" v="Yolo, CA"/>
+  <tag k="tiger:name_base" v="County Road 95A"/>
+  <tag k="tiger:reviewed" v="no"/>
+  <tag k="tiger:separated" v="no"/>
+  <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+  <tag k="tiger:tlid" v="67689232:67689168:67689169"/>
+  <tag k="tiger:upload_uuid" v="bulk_upload.pl-20c3e4cc-35fc-420e-9f0d-ebe52b92ebc4"/>
+  <tag k="tiger:zip_left" v="95695"/>
+  <tag k="tiger:zip_right" v="95695"/>
+ </way>
+</osm>
