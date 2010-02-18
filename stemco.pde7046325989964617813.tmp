@@ -3,19 +3,16 @@ PVector minLatLon, maxLatLon;
 HashMap hm;
 Boolean DEBUG = false;
 PFont fontA;
-ArrayList highwaysToDraw;
-
+  
 void setup() {
   //Processing tradition seems to be to do size calls first, but 
   //I need to dynamically figure out what Y is going to be. 
   //(it's based on x, and minmax lat/lon)
-  size(100, 100);
+  size(800,400);
   //Set up font rendering so we can write some text.
   fontA = loadFont("Arial-BoldMT-10.vlw");
   textFont(fontA, 10);
   strokeWeight(2);
-  drawMap("redmond_sm.osm");
-);
 
 }
 
@@ -41,13 +38,15 @@ void drawMap(String filename) {
   //Oh man I had these backwords. Lon is x, latitude is y.
   minLatLon = new PVector(kid.getFloatAttribute("minlon"), kid.getFloatAttribute("minlat"));
   maxLatLon = new PVector(kid.getFloatAttribute("maxlon"), kid.getFloatAttribute("maxlat"));
-  //It does seem to ignore these - some of the nodes returned by the OSM file exceed these bounds. Many of them do.
-  debugMsg("Min: " + minLatLon);
-  debugMsg("Max: " + maxLatLon);  
+  //It does seem to ignore these - some of the nodes
+  //returned by the OSM file exceed these bounds. Many of them do.
+  println("Min: " + minLatLon);
+  println("Max: " + maxLatLon);  
   int xSize = 500;
   int ySize = int(xSize * (minLatLon.x - minLatLon.y) / (maxLatLon.x - maxLatLon.y) / cos(maxLatLon.y/360*PI*2));
   size(xSize, ySize);
-  debugMsg("Size x: " + xSize + " thus Y: " + ySize);
+  println("Size x: " + xSize + " thus Y: " + ySize);
+
 
   for (int i = 1; i < numNodes; i++) { 
     PVector vertexCoord = new PVector();
@@ -57,48 +56,42 @@ void drawMap(String filename) {
       String id = kid.getStringAttribute("id");
       float lat = kid.getFloatAttribute("lat");
       float lon = kid.getFloatAttribute("lon");
-      debugMsg(id + " : " + name + " : " + lat + " : " + lon);   
+      if(DEBUG)
+        println(id + " : " + name + " : " + lat + " : " + lon);   
       PVector latlon = new PVector(lon, lat);
-      //PVector ellipseCoord = getScreenCoords(latlon);
-      //noFill();
-      //ellipse(ellipseCoord.x, ellipseCoord.y, 5, 5);
-      hm.put(id, new OsmNode(int(id), lat, lon));
+      PVector ellipseCoord = getScreenCoords(latlon);
+      noFill();
+      ellipse(ellipseCoord.x, ellipseCoord.y, 5, 5);
+      hm.put(id, kid);
     } else if(name.equals("way")) {
-        OsmWay way = new OsmWay(int(kid.getStringAttribute("id")));
         int numNodesInWay = kid.getChildCount();
+        println(numNodesInWay);
+        noFill();
+        beginShape();
+        //println("BEGIN");
+        stroke(random(255), random(255), random(255));
         for(int j=0; j<numNodesInWay; j++) {
           XMLElement kid2 = kid.getChild(j);
           if(kid2.getName().equals("nd")) { 
-            OsmNode noder = (OsmNode)hm.get(kid.getChild(j).getStringAttribute("ref"));
-            way.addNode(noder);
+            kid2 = (XMLElement)hm.get(kid.getChild(j).getStringAttribute("ref"));
+            vertexCoord = new PVector(kid2.getFloatAttribute("lon"), kid2.getFloatAttribute("lat"));
+            vertexCoord = getScreenCoords(vertexCoord);
+            vertex(vertexCoord.x, vertexCoord.y);
+            println("vertex: [" + vertexCoord.x + "," + vertexCoord.y + "]");
+            //ellipse(vertexCoord.x, vertexCoord.y, 20, 20);
           } else if(kid2.getName().equals("tag")){
               if(kid2.getStringAttribute("k").equals("name")) {
-                way.name = kid2.getStringAttribute("v");
-              }
-              if(kid2.getStringAttribute("k").equals("highway")) {
-                way.highwayType = kid2.getStringAttribute("v");
-              }
-          }
-        }//end of for loop 
-     
-        if(way.willDraw()) {
-          noFill();
-          beginShape();
-          stroke(random(255), random(255), random(255));
-          for(int k=0; k<way.nodes.size(); k++) {
-            OsmNode node = (OsmNode)way.nodes.get(k);
-            PVector vert = getScreenCoords(node.lonlat);
-            vertex(vert.x, vert.y);
-            if(k == way.nodes.size() / 2 && way.name != null) {
-              //draw name at middle node. offset in the x direction by length.
-              fill(0);
-              text(way.name, vert.x - (10 - random(20)), vert.y - (10 - random(20)));
-              noFill();
+                fill(0);
+                text(kid2.getStringAttribute ("v"), vertexCoord.x, vertexCoord.y);
+                noFill();
             }
+          } else {
+            continue;
           }
-          endShape();
         }
-    }//end of for loop
+        //println("END");
+        endShape();
+    }
   }
 }
 
@@ -111,13 +104,18 @@ PVector getLonLat(PVector screenCoords) {
 }
 PVector getScreenCoords(PVector rawCoords) {
   PVector ans = new PVector();
-  ans.x = (rawCoords.x - minLatLon.x) / (maxLatLon.x - minLatLon.x) * width;
-  ans.y = height - (rawCoords.y - minLatLon.y) / (maxLatLon.y - minLatLon.y) * height;
-  //ans.x = (abs(abs(rawCoords.x)-abs(minLatLon.x))) / (abs(abs(maxLatLon.x)-abs(minLatLon.x))) * width;
-  //ans.y = abs(height - (abs(abs(rawCoords.y)-abs(minLatLon.y))) / abs((abs(maxLatLon.y)-abs(minLatLon.y))) * height); 
+/*  if(DEBUG == true) {
+    float diff = rawCoords.y-minLatLon.y;
+    float total = maxLatLon.y-minLatLon.y;
+    println("Diff: " + diff + ", Total: " + total + ", diff/total: " + diff/total);
+  }
+*/
+  ans.x = (abs(abs(rawCoords.x)-abs(minLatLon.x))) / (abs(abs(maxLatLon.x)-abs(minLatLon.x))) * width;
+  ans.y = abs(height - (abs(abs(rawCoords.y)-abs(minLatLon.y))) / abs((abs(maxLatLon.y)-abs(minLatLon.y))) * height); 
   //screen coordinates, 0,0 is upper left, not lower left. this killed me for a good hour.
-  debugMsg(rawCoords + " --> " + ans);
-
+/*  if(DEBUG) 
+    println(rawCoords + " --> " + ans);
+*/
   return ans;
 }
 
@@ -158,12 +156,6 @@ boolean testGetScreenCoords() {
    ellipse(testans.x, testans. y, 20, 20);
    
    return true;
-}
-
-void debugMsg(String msg) {
-  if(DEBUG) {
-    println(msg);
-  }
 }
 /**@deprecated
 float getScreenX(float lon) {
