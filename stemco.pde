@@ -15,14 +15,13 @@ void setup() {
   textFont(fontA, 10);
   strokeWeight(2);
   drawMap("redmond_sm.osm");
-);
 
 }
 
 void draw() {
   noStroke();
   fill(255);
-  rect(0,0,200,30);
+  rect(0,0,125,30);
   fill(0);
   text(mouseX + "," + mouseY, 10, 10);
   PVector lonLat = getLonLat(new PVector(mouseX, mouseY));
@@ -102,22 +101,18 @@ void drawMap(String filename) {
   }
 }
 
-
 PVector getLonLat(PVector screenCoords) {
   PVector ans = new PVector();
-  ans.x = mouseX*1.0/width * abs(abs(maxLatLon.x)-abs(minLatLon.x)) + minLatLon.x;
-  ans.y = mouseY*1.0/height * abs((abs(maxLatLon.y)-abs(minLatLon.y))) + minLatLon.y;
+  ans.x = map(mouseX, 0, width, minLatLon.x, maxLatLon.x);
+  ans.y = map(mouseY, height, 0, minLatLon.y, maxLatLon.y);
   return ans;
 }
 PVector getScreenCoords(PVector rawCoords) {
   PVector ans = new PVector();
-  ans.x = (rawCoords.x - minLatLon.x) / (maxLatLon.x - minLatLon.x) * width;
-  ans.y = height - (rawCoords.y - minLatLon.y) / (maxLatLon.y - minLatLon.y) * height;
-  //ans.x = (abs(abs(rawCoords.x)-abs(minLatLon.x))) / (abs(abs(maxLatLon.x)-abs(minLatLon.x))) * width;
-  //ans.y = abs(height - (abs(abs(rawCoords.y)-abs(minLatLon.y))) / abs((abs(maxLatLon.y)-abs(minLatLon.y))) * height); 
+  ans.x = map(rawCoords.x, minLatLon.x, maxLatLon.x, 0, width);
+  ans.y = map(rawCoords.y, minLatLon.y, maxLatLon.y, height, 0);
   //screen coordinates, 0,0 is upper left, not lower left. this killed me for a good hour.
   debugMsg(rawCoords + " --> " + ans);
-
   return ans;
 }
 
